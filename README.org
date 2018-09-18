@@ -1,0 +1,31 @@
+* Ansible playbook for Scala
+  
+- Develop and run Scala code, without installing SBT or a JDK.
+- Fork, and edit the docker-compose file to run multiple versions of JDK or SBT.
+- Fork, and add your own docker file to switch to a different JDK.
+ 
+Requires Ansible, Docker, and Fish shell (PRs accepted for other shells)
+
+** Usage
+Run playbook to install
+#+BEGIN_SRC shell
+  ./site.yml
+#+END_SRC
+
+Run SBT just as if it we're installed on the system.
+
+** System State
+
+The installation creates or edits the following files and directories.
+|-----------------------------+---------------------------------------|
+| ~/.ivy2                     | dependency cache                      |
+| ~/.sbt                      | SBT configuration                     |
+| ~/.docker-compose/scala.yml | docker-compose file                   |
+
+** Troubleshooting
+ 
+Interactive shell
+#+BEGIN_SRC shell
+  docker-compose -f ~/.docker-compose/scala.yml run -it /bin/bash
+#+END_SRC
+

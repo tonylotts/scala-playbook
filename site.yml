@@ -1,0 +1,24 @@
+#!/usr/bin/env ansible-playbook
+
+# scala playbook
+
+---
+
+- hosts: localhost
+  tasks:
+    - name: ~/.docker-compose directory
+      file:
+        dest: '~/.docker-compose'
+        state: directory
+
+    - name: SBT compose file presence
+      file:
+        src: "{{ playbook_dir }}/files/scala.yml"
+        dest: '~/.docker-compose/scala.yml'
+        state: link
+
+    - name: SBT Fish function
+      file:
+        src: "{{ playbook_dir }}/files/sbt.fish"
+        dest: '~/.config/fish/functions/sbt.fish'
+        state: link

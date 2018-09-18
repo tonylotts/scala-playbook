@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  scala-sbt:
+    image: hseeberger/scala-sbt:8u181_2.12.6_1.2.3
+    working_dir: /app
+    network_mode: "host"
+    volumes:
+      - ${PWD}:/app
+      - ~/.ivy2:/root/.ivy2
+      - ~/.sbt:/root/.sbt
